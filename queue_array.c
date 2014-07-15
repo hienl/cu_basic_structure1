@@ -17,10 +17,8 @@ int main(int argc, char *argv[]) {
   
   int queue_size;
   queue_size = 10;
-  for (int i = 1; i < argc; ++i) {
-    if ( i == 1 ) {
-      queue_size = atoi(argv[i]);
-    }
+  if (argc > 1) {
+    queue_size = atoi(argv[1]);
   }
   int pointer = 0;
   printf("queue size: %i\n", queue_size);
