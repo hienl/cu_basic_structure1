@@ -7,7 +7,20 @@ void push(int *stack, int data, int *pointer) {
 }
 
 int pop(int *stack, int *pointer) {
-  return stack[--(*pointer)];
+  int data = stack[--(*pointer)];
+  stack[*pointer] = 0;
+  return data;
+}
+
+void p(int *stack, int size) {
+  printf("%c", '[');
+  for(int i=0; i<size; i++) {
+    printf("%00000000000d", stack[i]);
+    if (i != size - 1) {
+      printf("%c ", ',');
+    }
+  }
+  printf("%c\n", ']');
 }
 
 int main(int argc, char *argv[]) {
@@ -24,21 +37,24 @@ int main(int argc, char *argv[]) {
 
   int *stack;
 
-  stack = malloc(sizeof(int) * stack_size);
+  stack = calloc(sizeof(int), stack_size);
   if(NULL == stack) {
     printf("ERROR: malloc failed.\n");
     exit(-1);
   }
   srand((unsigned)time(NULL));
+  p(stack, stack_size);
   for(int i=0; i<stack_size; i++) {
     int data = rand();
     push(stack, data, &pointer);
     printf("push: %i\n", data);
+    p(stack, stack_size);
   }
 
   for(int i=0; i<stack_size; i++) {
     int data = pop(stack, &pointer);
     printf("pop:  %i\n", data);
+    p(stack, stack_size);
   }
 
   free(stack);
