@@ -19,7 +19,7 @@ int dequeue(int *queue, int *pointer) {
 void p(int *queue, int size) {
   printf("%c", '[');
   for(int i=0; i<size; i++) {
-    printf("%00000000000d", queue[i]);
+    printf("%0d", queue[i]);
     if (i != size - 1) {
       printf("%c ", ',');
     }

@@ -15,7 +15,7 @@ int pop(int *stack, int *pointer) {
 void p(int *stack, int size) {
   printf("%c", '[');
   for(int i=0; i<size; i++) {
-    printf("%00000000000d", stack[i]);
+    printf("%0d", stack[i]);
     if (i != size - 1) {
       printf("%c ", ',');
     }
